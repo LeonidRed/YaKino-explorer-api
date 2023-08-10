@@ -5,7 +5,7 @@ const BadRequestErr = require('../errors/bad-request-err');
 const ForbiddeErr = require('../errors/forbidden-err');
 
 const getMovies = (req, res, next) => {
-  Movie.find({})
+  Movie.find({ owner: req.user._id })
     .then((movies) => res.send(movies))
     .catch(next);
 };
@@ -31,7 +31,7 @@ const deleteMovie = (req, res, next) => {
       } else if (movie.owner.toString() !== req.user._id) {
         throw new ForbiddeErr('У вас нет прав на удаление этого фильма');
       } else {
-        Movie.findByIdAndRemove(req.params.id).then(() => res.send({ message: 'Фильм удален' }));
+        return Movie.findByIdAndRemove(req.params.id).then(() => res.send({ message: 'Фильм удален' }));
       }
     })
     .catch((err) => {
