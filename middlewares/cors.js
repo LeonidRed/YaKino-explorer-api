@@ -1,7 +1,7 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://imesto.nomoredomains.xyz',
-  'http://imesto.nomoredomains.xyz',
+  'https://yakino.nomoreparties.co',
+  'http://yakino.nomoreparties.co',
   'localhost:3000',
   // 'http://localhost:3000',
   // 'http://localhost:3002',

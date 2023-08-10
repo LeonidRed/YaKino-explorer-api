@@ -5,6 +5,9 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
 const BadRequestErr = require('../errors/bad-request-err');
 const ConflictErr = require('../errors/conflict-err');
+const BAD_REQUEST_MESSAGE = require('../utils/constants');
+const NOT_FOUND_MESSAGE = require('../utils/constants');
+const CONFLICT_MESSAGE = require('../utils/constants');
 
 const { CREATED } = require('../utils/errors');
 
@@ -30,15 +33,15 @@ const updateUser = (req, res, next) => {
   )
     .then((user) => {
       if (!user) {
-        throw new NotFoundError('Пользователь с указанным _id не найден');
+        throw new NotFoundError(NOT_FOUND_MESSAGE);
       }
       return res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestErr('Переданы некорректные данные пользователя'));
+        next(new BadRequestErr(BAD_REQUEST_MESSAGE));
       } else if (err.code === 11000) {
-        next(new ConflictErr('Такой email адрес уже зарегистрирован'));
+        next(new ConflictErr(CONFLICT_MESSAGE));
       } else {
         next(err);
       }
@@ -59,9 +62,9 @@ const signup = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        next(new BadRequestErr('Переданы некорректные данные при создании пользователя'));
+        next(new BadRequestErr(BAD_REQUEST_MESSAGE));
       } else if (err.code === 11000) {
-        next(new ConflictErr('Такой email адрес уже зарегистрирован'));
+        next(new ConflictErr(CONFLICT_MESSAGE));
       } else {
         next(err);
       }

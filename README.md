@@ -1,3 +1,3 @@
 # YaKino-explorer-api
 
-Backend https://api.yakino.nomoredomains.xyz/
+Backend https://api.yakino.nomoreparties.co/
