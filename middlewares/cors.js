@@ -1,12 +1,12 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://yakino.nomoreparties.co',
-  'http://yakino.nomoreparties.co',
-  'localhost:3000',
+  // 'https://yakino.nomoreparties.co',
+  // 'http://yakino.nomoreparties.co',
+  // 'localhost:3000',
   // 'http://localhost:3000',
-  // 'http://localhost:3002',
-  // 'localhost:3001',
-  // 'localhost:3002',
+  'http://localhost:3002',
+  'https://localhost:3002',
+  'localhost:3002',
 ];
 
 // eslint-disable-next-line consistent-return

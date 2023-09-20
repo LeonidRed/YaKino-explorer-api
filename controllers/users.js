@@ -56,10 +56,14 @@ const signup = (req, res, next) => {
     .then((hash) => User.create({
       name, email, password: hash,
     }))
-    .then((user) => res.status(CREATED).send({
-      name: user.name,
-      email: user.email,
-    }))
+    .then((user) => {
+      const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret'}`, { expiresIn: '7d' });
+      res.status(CREATED).send({
+        token,
+        name: user.name,
+        email: user.email,
+      });
+    })
     .catch((err) => {
       if (err.name === 'ValidationError') {
         next(new BadRequestErr(BAD_REQUEST_MESSAGE));

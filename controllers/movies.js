@@ -8,6 +8,7 @@ const FORBIDDE_MESSAGE = require('../utils/constants');
 
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
+    // Movie.find()
     .then((movies) => res.send(movies))
     .catch(next);
 };
@@ -33,7 +34,8 @@ const deleteMovie = (req, res, next) => {
       } else if (movie.owner.toString() !== req.user._id) {
         throw new ForbiddeErr(FORBIDDE_MESSAGE);
       } else {
-        return Movie.findByIdAndRemove(req.params.id).then(() => res.send({ message: 'Фильм удален' }));
+        // return Movie.findByIdAndRemove(req.params.id).then(() => res.status({ message: 'Фильм удален' }).send(movie));
+        return Movie.findByIdAndRemove(req.params.id).then(() => res.send(movie));
       }
     })
     .catch((err) => {
