@@ -1,7 +1,7 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  // 'https://yakino.nomoreparties.co',
-  // 'http://yakino.nomoreparties.co',
+  'https://yakino.nomoredomainsrocks.co',
+  'http://yakino.nomoredomainsrocks.co',
   // 'localhost:3000',
   // 'http://localhost:3000',
   'http://localhost:3002',
