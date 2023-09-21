@@ -2,8 +2,8 @@
 const allowedCors = [
   'https://yakino.nomoredomainsrocks.co',
   'http://yakino.nomoredomainsrocks.co',
-  // 'localhost:3000',
-  // 'http://localhost:3000',
+  'localhost:3000',
+  'http://localhost:3000',
   'http://localhost:3002',
   'https://localhost:3002',
   'localhost:3002',
